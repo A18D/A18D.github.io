@@ -47189,8 +47189,8 @@ var LessonTemplate = function (_PureComponent) {
 
       var noEvaluation = _this.state.noEvaluation;
 
-      if (_this.props.countRightAnswers == 1) {
-        //this.props.countAnswers)
+      if (_this.props.countRightAnswers == _this.props.countAnswers) {
+        //)
 
         if (_this.props.currentTask < _this.props.countTasks - 1) {
           incrementCurrentTask();
