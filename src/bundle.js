@@ -51637,6 +51637,14 @@ var _history = __webpack_require__(/*! ../history */ "./src/history.js");
 
 var _history2 = _interopRequireDefault(_history);
 
+var _iSmart = __webpack_require__(/*! img/iSmart.png */ "./src/images/iSmart.png");
+
+var _iSmart2 = _interopRequireDefault(_iSmart);
+
+var _imgInstagram = __webpack_require__(/*! img/imgInstagram.jpg */ "./src/images/imgInstagram.jpg");
+
+var _imgInstagram2 = _interopRequireDefault(_imgInstagram);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51715,7 +51723,7 @@ var FooterPage = exports.FooterPage = function (_PureComponent) {
                   'a',
                   { href: '/', target: '_blank' },
                   _react2.default.createElement('img', {
-                    src: './src/images/iSmart.png',
+                    src: _iSmart2.default,
                     alt: '\u043B\u043E\u0433\u043E\u0442\u0438\u043F',
                     width: '40',
                     height: '40'
@@ -51786,7 +51794,7 @@ var FooterPage = exports.FooterPage = function (_PureComponent) {
                   'a',
                   { href: 'https://www.instagram.com', target: '_blank' },
                   _react2.default.createElement('img', {
-                    src: './src/images/imgInstagram.jpg',
+                    src: _imgInstagram2.default,
                     alt: '\u043B\u043E\u0433\u043E\u0442\u0438\u043F',
                     width: '20',
                     height: '20'
@@ -52102,7 +52110,7 @@ var _jssPresetDefault = __webpack_require__(/*! jss-preset-default */ "./node_mo
 
 var _jssPresetDefault2 = _interopRequireDefault(_jssPresetDefault);
 
-var _styleRightLessonTemplates = __webpack_require__(/*! ./../../css/LessonTemplate/styleRightLessonTemplates */ "./src/css/LessonTemplate/styleRightLessonTemplates.js");
+var _styleRightLessonTemplates = __webpack_require__(/*! styles/LessonTemplate/styleRightLessonTemplates */ "./src/css/LessonTemplate/styleRightLessonTemplates.js");
 
 var _styleRightLessonTemplates2 = _interopRequireDefault(_styleRightLessonTemplates);
 
@@ -53472,7 +53480,7 @@ var LessonInput = function (_PureComponent) {
             // показать ошибку
 
 
-            errorTag.className = classes.error; //'error';
+            errorTag.className = classes.error;
             errorTag.innerHTML = 'Вы ввели не число. Введите число, пожалуйста.';
           } else if (tagInput.value == _this.props.answers[i - 1]) iRightAnswer++;
         });
@@ -53992,6 +54000,202 @@ TipNoteImage.propTypes = {
   image: _propTypes2.default.string.isRequired
 };
 exports.default = TipNoteImage;
+
+/***/ }),
+
+/***/ "./src/components/Other/WriteLinkedList.js":
+/*!*************************************************!*\
+  !*** ./src/components/Other/WriteLinkedList.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.WriteLinkedList = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _LinkedList = __webpack_require__(/*! libs/DataStructures/LinkedList.js */ "./src/lib/DataStructures/LinkedList.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var WriteLinkedList = exports.WriteLinkedList = function (_PureComponent) {
+  _inherits(WriteLinkedList, _PureComponent);
+
+  function WriteLinkedList(props) {
+    _classCallCheck(this, WriteLinkedList);
+
+    var _this = _possibleConstructorReturn(this, (WriteLinkedList.__proto__ || Object.getPrototypeOf(WriteLinkedList)).call(this, props));
+
+    _this.handleAddToFirst = function (e) {
+      var idTag = 'Element';
+      var tagInput = document.getElementById(idTag);
+      _this.DL.AddFirst(tagInput.value);
+      _this.OutputList();
+    };
+
+    _this.handleAddToLast = function (e) {
+      var idTag = 'Element';
+      var tagInput = document.getElementById(idTag);
+      _this.DL.AddLast(tagInput.value);
+      _this.OutputList();
+    };
+
+    _this.handleRemoveAt = function (e) {
+      var idTag = 'NumberPosition';
+      var tagInput = document.getElementById(idTag);
+      _this.DL.RemoveAt(tagInput.value);
+      _this.OutputList();
+    };
+
+    _this.handleSortBubble = function (e) {
+      _this.DL.SortBubble();
+      _this.OutputList();
+    };
+
+    _this.handleGenerateList = function (e) {
+      _this.DL = new _LinkedList.DoublyList();
+
+      for (var i = 0; i < 6; i++) {
+        var j = _this.randomInteger(0, 10);
+        _this.DL.AddFirst(j);
+      }
+
+      _this.OutputList();
+    };
+
+    _this.OutputList = function () {
+      var idTag = 'LinkedList';
+      var tagOutput = document.getElementById(idTag);
+      tagOutput.textContent = _this.DL.toString();
+
+      var i = 3;
+      var j = 0;
+
+      // в цикле for будем перебирать массив tasks, который находится в объекте taskList
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = _this.DL[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var dataNode = _step.value;
+
+          //console.log ('dataNode = ' + dataNode);
+
+          if (i == j) {
+            //alert ('dataNode = ' + dataNode);
+            //console.log ('Победитель');
+          }
+
+          j++;
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    };
+
+    _this.DL = new _LinkedList.DoublyList();
+    return _this;
+  }
+
+  _createClass(WriteLinkedList, [{
+    key: 'randomInteger',
+    value: function randomInteger(min, max) {
+      var rand = min + Math.random() * (max + 1 - min);
+      rand = Math.floor(rand);
+      return rand;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { 'class': 'Top40 space45' },
+        _react2.default.createElement(
+          'p',
+          { 'class': 'sizebig' },
+          '\u0414\u0438\u043D\u0430\u043C\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u044B \u0434\u0430\u043D\u043D\u044B\u0445'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          '\u0414\u0432\u0443\u0441\u0432\u044F\u0437\u043D\u044B\u0439 \u0441\u043F\u0438\u0441\u043E\u043A'
+        ),
+        _react2.default.createElement(
+          'button',
+          { 'class': 'buttonGreen', onClick: this.handleAddToFirst },
+          'Add to first'
+        ),
+        _react2.default.createElement(
+          'button',
+          { 'class': 'buttonGreen', onClick: this.handleAddToLast },
+          'Add to last'
+        ),
+        _react2.default.createElement(
+          'button',
+          { 'class': 'buttonGreen', onClick: this.handleGenerateList },
+          'Generate list'
+        ),
+        _react2.default.createElement(
+          'button',
+          { 'class': 'buttonGreen', onClick: this.handleSortBubble },
+          'Sort bubble list'
+        ),
+        _react2.default.createElement(
+          'button',
+          { 'class': 'buttonGreen', onClick: this.handleRemoveAt },
+          'Remove at'
+        ),
+        _react2.default.createElement(
+          'div',
+          { 'class': 'HorizontalContainer Top40 bottom0' },
+          _react2.default.createElement(
+            'p',
+            null,
+            'Enter the value:'
+          ),
+          _react2.default.createElement('input', { type: 'text', id: 'Element' }),
+          _react2.default.createElement(
+            'p',
+            { 'class': 'space45' },
+            '\u041D\u043E\u043C\u0435\u0440 \u043F\u043E\u0437\u0438\u0446\u0438\u0438 \u0434\u043B\u044F \u0443\u0434\u0430\u043B\u0435\u043D\u0438\u044F:'
+          ),
+          _react2.default.createElement('input', { type: 'text', id: 'NumberPosition' })
+        ),
+        _react2.default.createElement('p', { id: 'LinkedList' })
+      );
+    }
+  }]);
+
+  return WriteLinkedList;
+}(_react.PureComponent);
 
 /***/ }),
 
@@ -54535,7 +54739,7 @@ var PageTemplate = exports.PageTemplate = function PageTemplate(_ref) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Search = undefined;
 
@@ -54553,6 +54757,10 @@ var _history = __webpack_require__(/*! ../../history */ "./src/history.js");
 
 var _history2 = _interopRequireDefault(_history);
 
+var _sort = __webpack_require__(/*! libs/sort.js */ "./src/lib/sort.js");
+
+var _WriteLinkedList = __webpack_require__(/*! ../Other/WriteLinkedList */ "./src/components/Other/WriteLinkedList.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54561,64 +54769,157 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var timers = {};
+
+// прибавит время выполнения f к таймеру timers[timer]
+function timingDecorator(f, timer) {
+  return function () {
+    var start = performance.now();
+    console.dir(this);
+    console.dir(arguments);
+
+    var result = f.apply(this, arguments); // (*)
+
+    if (!timers[timer]) timers[timer] = 0;
+    timers[timer] += performance.now() - start;
+
+    return result;
+  };
+}
+
 var Search = exports.Search = function (_React$Component) {
-    _inherits(Search, _React$Component);
+  _inherits(Search, _React$Component);
 
-    function Search() {
-        _classCallCheck(this, Search);
+  function Search() {
+    _classCallCheck(this, Search);
 
-        return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+  }
+
+  _createClass(Search, [{
+    key: 'goBackToPath',
+    value: function goBackToPath() {
+      _history2.default.goBack();
     }
+  }, {
+    key: 'pushWebinarToPath',
+    value: function pushWebinarToPath() {
+      _history2.default.push('./#/Webinar');
+      _history2.default.go();
+    }
+  }, {
+    key: 'handlerFibonachi',
+    value: function handlerFibonachi() {
+      // функция может быть произвольной, например такой:
+      var fibonacci = function f(n) {
+        return n > 2 ? f(n - 1) + f(n - 2) : 1;
+      };
 
-    _createClass(Search, [{
-        key: 'goBackToPath',
-        value: function goBackToPath() {
-            _history2.default.goBack();
-        }
-    }, {
-        key: 'pushWebinarToPath',
-        value: function pushWebinarToPath() {
-            _history2.default.push("./#/Webinar");
-            _history2.default.go();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+      // использование: завернём fibonacci в декоратор
+      fibonacci = timingDecorator(fibonacci, 'fibo');
+      // неоднократные вызовы...
+      alert(fibonacci(10)); // 55
+      alert(fibonacci(20)); // 6765
+      // ...
 
-            //Такой синтаксис гарантирует, что "this" привязан к onLog
-            return _react2.default.createElement(
-                _pageTemplate.PageTemplate,
-                null,
-                _react2.default.createElement(
-                    'section',
-                    null,
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'Search the information'
-                    ),
-                    _react2.default.createElement('div', { id: 'menu-training' }),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: function onClick(e) {
-                                return _this2.goBackToPath(e);
-                            } },
-                        'go back'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: function onClick(e) {
-                                return _this2.pushWebinarToPath(e);
-                            } },
-                        'push webinar to path'
-                    )
-                )
-            );
-        }
-    }]);
+      // в любой момент можно получить общее количество времени на вызовы
+      alert(timers.fibo + 'мс');
+    }
+  }, {
+    key: 'handlerBubbleSort',
+    value: function handlerBubbleSort() {
+      var num_array = [4, 3, 7, 1, 9];
+      (0, _sort.BubbleSort)(num_array);
+    }
+  }, {
+    key: 'handlerclosure',
+    value: function handlerclosure() {
+      var co = this.makeCounter();
 
-    return Search;
+      alert(co()); // 1
+      alert(co()); // 2
+    }
+  }, {
+    key: 'makeCounter',
+    value: function makeCounter() {
+      var currentCount = 1;
+
+      // возвращаемся к функции
+      function counter() {
+        return currentCount++;
+      }
+
+      // ...и добавляем ей методы!
+      counter.set = function (value) {
+        currentCount = value;
+      };
+
+      counter.reset = function () {
+        currentCount = 1;
+      };
+
+      return counter;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      //Такой синтаксис гарантирует, что "this" привязан к onLog
+      return _react2.default.createElement(
+        _pageTemplate.PageTemplate,
+        null,
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Search the information'
+          ),
+          _react2.default.createElement('div', { id: 'menu-training' }),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.handlerBubbleSort(e);
+              } },
+            'Bubble sort'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.handlerFibonachi(e);
+              } },
+            '\u0424\u0438\u0431\u043E\u043D\u0430\u0447\u0447\u0438'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.goBackToPath(e);
+              } },
+            'go back'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.pushWebinarToPath(e);
+              } },
+            'push webinar to path'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                return _this2.handlerclosure(e);
+              } },
+            'Closure'
+          ),
+          _react2.default.createElement(_WriteLinkedList.WriteLinkedList, null)
+        )
+      );
+    }
+  }]);
+
+  return Search;
 }(_react2.default.Component);
 
 /***/ }),
@@ -55592,6 +55893,28 @@ exports.default = history;
 
 /***/ }),
 
+/***/ "./src/images/iSmart.png":
+/*!*******************************!*\
+  !*** ./src/images/iSmart.png ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/images/iSmart.png";
+
+/***/ }),
+
+/***/ "./src/images/imgInstagram.jpg":
+/*!*************************************!*\
+  !*** ./src/images/imgInstagram.jpg ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "src/images/imgInstagram.jpg";
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -55612,47 +55935,47 @@ var _Root = __webpack_require__(/*! ./components/Root */ "./src/components/Root.
 
 var _Root2 = _interopRequireDefault(_Root);
 
-__webpack_require__(/*! ./fonts/glyphicons-halflings-regular.eot */ "./src/fonts/glyphicons-halflings-regular.eot");
+__webpack_require__(/*! fonts/glyphicons-halflings-regular.eot */ "./src/fonts/glyphicons-halflings-regular.eot");
 
-__webpack_require__(/*! ./fonts/glyphicons-halflings-regular.svg */ "./src/fonts/glyphicons-halflings-regular.svg");
+__webpack_require__(/*! fonts/glyphicons-halflings-regular.svg */ "./src/fonts/glyphicons-halflings-regular.svg");
 
-__webpack_require__(/*! ./fonts/glyphicons-halflings-regular.ttf */ "./src/fonts/glyphicons-halflings-regular.ttf");
+__webpack_require__(/*! fonts/glyphicons-halflings-regular.ttf */ "./src/fonts/glyphicons-halflings-regular.ttf");
 
-__webpack_require__(/*! ./fonts/glyphicons-halflings-regular.woff */ "./src/fonts/glyphicons-halflings-regular.woff");
+__webpack_require__(/*! fonts/glyphicons-halflings-regular.woff */ "./src/fonts/glyphicons-halflings-regular.woff");
 
-__webpack_require__(/*! ./fonts/glyphicons-halflings-regular.woff2 */ "./src/fonts/glyphicons-halflings-regular.woff2");
+__webpack_require__(/*! fonts/glyphicons-halflings-regular.woff2 */ "./src/fonts/glyphicons-halflings-regular.woff2");
 
-__webpack_require__(/*! ./fonts//font-awesome/fontawesome-webfont.eot */ "./src/fonts/font-awesome/fontawesome-webfont.eot");
+__webpack_require__(/*! fonts//font-awesome/fontawesome-webfont.eot */ "./src/fonts/font-awesome/fontawesome-webfont.eot");
 
-__webpack_require__(/*! ./fonts//font-awesome/fontawesome-webfont.svg */ "./src/fonts/font-awesome/fontawesome-webfont.svg");
+__webpack_require__(/*! fonts//font-awesome/fontawesome-webfont.svg */ "./src/fonts/font-awesome/fontawesome-webfont.svg");
 
-__webpack_require__(/*! ./fonts//font-awesome/fontawesome-webfont.ttf */ "./src/fonts/font-awesome/fontawesome-webfont.ttf");
+__webpack_require__(/*! fonts//font-awesome/fontawesome-webfont.ttf */ "./src/fonts/font-awesome/fontawesome-webfont.ttf");
 
-__webpack_require__(/*! ./fonts//font-awesome/fontawesome-webfont.woff */ "./src/fonts/font-awesome/fontawesome-webfont.woff");
+__webpack_require__(/*! fonts//font-awesome/fontawesome-webfont.woff */ "./src/fonts/font-awesome/fontawesome-webfont.woff");
 
-__webpack_require__(/*! ./fonts//font-awesome/fontawesome-webfont.woff2 */ "./src/fonts/font-awesome/fontawesome-webfont.woff2");
+__webpack_require__(/*! fonts//font-awesome/fontawesome-webfont.woff2 */ "./src/fonts/font-awesome/fontawesome-webfont.woff2");
 
-__webpack_require__(/*! ./fonts//font-awesome/FontAwesome.otf */ "./src/fonts/font-awesome/FontAwesome.otf");
+__webpack_require__(/*! fonts//font-awesome/FontAwesome.otf */ "./src/fonts/font-awesome/FontAwesome.otf");
 
-__webpack_require__(/*! ./css/bootstrap.css */ "./src/css/bootstrap.css");
+__webpack_require__(/*! styles/bootstrap.css */ "./src/css/bootstrap.css");
 
-__webpack_require__(/*! ./css/styleFooter.css */ "./src/css/styleFooter.css");
+__webpack_require__(/*! styles/styleFooter.css */ "./src/css/styleFooter.css");
 
-__webpack_require__(/*! ./css/font-awesome.css */ "./src/css/font-awesome.css");
+__webpack_require__(/*! styles/font-awesome.css */ "./src/css/font-awesome.css");
 
-__webpack_require__(/*! ./css/subMenu.css */ "./src/css/subMenu.css");
+__webpack_require__(/*! styles/subMenu.css */ "./src/css/subMenu.css");
 
-__webpack_require__(/*! ./css/styleMenu.css */ "./src/css/styleMenu.css");
+__webpack_require__(/*! styles/styleMenu.css */ "./src/css/styleMenu.css");
 
-__webpack_require__(/*! ./css/LessonTemplate/styleMenuBegin.css */ "./src/css/LessonTemplate/styleMenuBegin.css");
+__webpack_require__(/*! styles/LessonTemplate/styleMenuBegin.css */ "./src/css/LessonTemplate/styleMenuBegin.css");
 
-__webpack_require__(/*! ./css/LessonTemplate/styleTitleTask.css */ "./src/css/LessonTemplate/styleTitleTask.css");
+__webpack_require__(/*! styles/LessonTemplate/styleTitleTask.css */ "./src/css/LessonTemplate/styleTitleTask.css");
 
-__webpack_require__(/*! ./css/LessonTemplate/styleTask.css */ "./src/css/LessonTemplate/styleTask.css");
+__webpack_require__(/*! styles/LessonTemplate/styleTask.css */ "./src/css/LessonTemplate/styleTask.css");
 
-__webpack_require__(/*! ./css/LessonTemplate/styleCenterLessonTemplate.css */ "./src/css/LessonTemplate/styleCenterLessonTemplate.css");
+__webpack_require__(/*! styles/LessonTemplate/styleCenterLessonTemplate.css */ "./src/css/LessonTemplate/styleCenterLessonTemplate.css");
 
-__webpack_require__(/*! ./css/LessonTemplate/styleTabTip.css */ "./src/css/LessonTemplate/styleTabTip.css");
+__webpack_require__(/*! styles/LessonTemplate/styleTabTip.css */ "./src/css/LessonTemplate/styleTabTip.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55676,6 +55999,304 @@ Object.defineProperty(exports, "__esModule", {
 var getParentDiv = exports.getParentDiv = function getParentDiv(dropElem) {
   if (!dropElem.parentNode) return null;else if (dropElem.tagName == 'DIV') return dropElem;else return getParentDiv(dropElem.parentNode);
 };
+
+/***/ }),
+
+/***/ "./src/lib/DataStructures/LinkedList.js":
+/*!**********************************************!*\
+  !*** ./src/lib/DataStructures/LinkedList.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DoublyListNode = function () {
+  function DoublyListNode(obj) {
+    _classCallCheck(this, DoublyListNode);
+
+    this.data = obj;
+    this.prev = null;
+    this.next = null;
+  }
+
+  _createClass(DoublyListNode, [{
+    key: 'Data',
+    get: function get() {
+      return this.data;
+    },
+    set: function set(newValue) {
+      this.data = newValue;
+    }
+  }, {
+    key: 'Next',
+    get: function get() {
+      return this.next;
+    },
+    set: function set(newValue) {
+      this.next = newValue;
+    }
+  }, {
+    key: 'Prev',
+    get: function get() {
+      return this.prev;
+    },
+    set: function set(newValue) {
+      this.prev = newValue;
+    }
+  }]);
+
+  return DoublyListNode;
+}();
+
+var DoublyList = exports.DoublyList = function () {
+  function DoublyList(obj) {
+    var _this = this;
+
+    _classCallCheck(this, DoublyList);
+
+    this.ConFirstLast = function () {
+      if (_this.first && _this.last) {
+        _this.first.Prev = _this.last;
+        _this.last.Next = _this.first;
+      }
+    };
+
+    this.RemoveAt = function (NumberEl) {
+      var node = _this.first;
+
+      var pNumberEl = Number(NumberEl);
+
+      for (var i = 0; i < _this.count; i++) {
+        if (i == pNumberEl) {
+          node.Next.Prev = node.Prev;
+          node.Prev.Next = node.Next;
+
+          if (_this.count == 2) {
+            _this.first = node.Next;
+            _this.last = node.Prev;
+          } else if (_this.count == 1) {
+            _this.first = null;
+            _this.last = null;
+          } else if (i == 0) {
+            _this.first = node.Next;
+          } else if (i == _this.count - 1) {
+            _this.last = node.Prev;
+          }
+
+          _this.count--;
+          node = null;
+          _this.ConFirstLast();
+          break;
+        } else if (node) {
+          node = node.Next;
+        }
+      }
+    };
+
+    this.count = 0;
+    this.first = this.last = null;
+  }
+
+  _createClass(DoublyList, [{
+    key: 'AddFirst',
+    value: function AddFirst(obj) {
+      var node = new DoublyListNode(obj);
+
+      if (this.count == 0) {
+        this.first = this.last = node;
+      } else {
+        node.Next = this.first;
+        this.first = node;
+        node.Next.Prev = this.first;
+      }
+
+      this.count++;
+      this.ConFirstLast();
+    }
+  }, {
+    key: 'AddLast',
+    value: function AddLast(obj) {
+      var node = new DoublyListNode(obj);
+
+      if (this.count == 0) {
+        this.first = this.last = node;
+      } else {
+        node.Prev = this.last;
+        this.last = node;
+        node.Prev.Next = this.last;
+      }
+
+      this.count++;
+      this.ConFirstLast();
+    }
+  }, {
+    key: 'SortBubble',
+    value: function SortBubble() {
+      var i = 1;
+      var n = this.count;
+
+      while (i < n) {
+        var nodeB = this.last;
+        var j = n - 1;
+
+        while (j >= i) {
+          if (nodeB.Prev.Data > nodeB.Data) {
+            this.ChangeNodes(nodeB.Prev, nodeB);
+            nodeB = nodeB.Next;
+
+            if (j == n - 1) this.last = nodeB;else if (j == 1) this.first = nodeB.Prev;
+          }
+
+          nodeB = nodeB.Prev;
+          j--;
+        }
+
+        i++;
+      }
+
+      this.ConFirstLast();
+    }
+  }, {
+    key: 'ChangeNodes',
+    value: function ChangeNodes(nodeA, nodeB) {
+      nodeA.Next = nodeB.Next;
+      nodeB.Next.Prev = nodeA;
+      nodeB.Next = nodeA;
+      nodeB.Prev = nodeA.Prev;
+      nodeA.Prev = nodeB;
+      nodeB.Prev.Next = nodeB;
+    }
+  }, {
+    key: Symbol.iterator,
+    value: function value() {
+      var index = 0;
+      var N = this.count;
+      var node = this.first;
+
+      return {
+        next: function next() {
+          var result = {
+            value: undefined,
+            done: true
+          };
+
+          if (index < N) {
+            result.value = node.Data;
+            result.done = false;
+            index++;
+            node = node.Next;
+          }
+
+          return result;
+        }
+      };
+    }
+  }, {
+    key: 'toString',
+    value: function toString() {
+      var pValue = 'The list: ';
+      var node = this.first;
+
+      for (var i = 0; i < this.count; i++) {
+        pValue += node.Data + ' | ';
+        node = node.Next;
+      }
+
+      return pValue;
+    }
+  }, {
+    key: 'Count',
+    get: function get() {
+      return this.count;
+    },
+    set: function set(newValue) {
+      if (newValue < 0) throw new Error('The number of elements in the DoublyList can not be less than zero');else this.count = newValue;
+    }
+  }, {
+    key: 'First',
+    get: function get() {
+      return this.first;
+    },
+    set: function set(newValue) {
+      this.first = newValue;
+    }
+  }, {
+    key: 'Last',
+    get: function get() {
+      return this.last;
+    },
+    set: function set(newValue) {
+      this.last = newValue;
+    }
+  }]);
+
+  return DoublyList;
+}();
+
+/***/ }),
+
+/***/ "./src/lib/sort.js":
+/*!*************************!*\
+  !*** ./src/lib/sort.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BubbleSort = BubbleSort;
+function BubbleSort(A) {
+  // отсортировать по возрастанию.
+  console.log('BubbleSort');
+  console.log(A);
+
+  var n = A.length;
+
+  for (var i = 0; i < n - 1; i++) {
+    for (var j = 0; j < n - 1 - i; j++) {
+      if (A[j + 1] < A[j]) {
+        var t = A[j + 1];
+        A[j + 1] = A[j];
+        A[j] = t;
+      }
+    }
+  }console.log(A);
+
+  var B = A.forEach(function (item, i, arr) {
+    for (var _j = 0; _j < n - 1 - i; _j++) {
+      if (A[_j + 1] > A[_j]) {
+        var _t = A[_j + 1];
+        A[_j + 1] = A[_j];
+        A[_j] = _t;
+      }
+    }
+  });
+
+  console.log(A);
+
+  var C = [];
+
+  for (var key in A) {
+    C.push(A[key]);
+  }
+  console.log(C);
+  console.log('~BubbleSort');
+  return A; // На выходе сортированный по возрастанию массив A.
+}
 
 /***/ }),
 
